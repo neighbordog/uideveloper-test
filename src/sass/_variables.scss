@@ -1,0 +1,32 @@
+/**
+*   Variables
+*/
+
+/*
+    Fonts
+*/
+$mainFontFamily: "Avenir", "HelveticaNeue", "Helvetica", "Arial", sans-serif;
+
+/*
+    Colors
+*/
+$red: #f71010;
+$grey: #eceaea;
+$white: #fff;
+$black: #111;
+$headlineColor: $black;
+$textColor: #999;
+$borderColor: #ddd;
+$accentColor: #ea4c89;
+
+/*
+    Breakpoints
+*/
+$mobileBreakpoint: 480px;
+$tabletBreakpoint: 768px;
+$bigScreenBreakpoint: 1200px;
+
+/*
+    Misc.
+*/
+$baseBorderRadius: 6px;

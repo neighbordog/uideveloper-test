@@ -1,0 +1,40 @@
+{
+  "name": "uideveloper-test",
+  "version": "0.0.1",
+  "description": "Displays products from Selz.com in form of a widget",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_PATH=. node_modules/casperjs/bin/casperjs test specs/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neighbordog/uideveloper-test.git"
+  },
+  "keywords": [
+    "selz",
+    "product",
+    "widget",
+    "buy"
+  ],
+  "author": "Kevin Eichhorn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neighbordog/uideveloper-test/issues"
+  },
+  "homepage": "https://github.com/neighbordog/uideveloper-test#readme",
+  "devDependencies": {
+    "casperjs": "^1.1.0-beta5",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-cssnano": "^2.1.1",
+    "gulp-jshint": "^2.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0",
+    "gulp-uglify": "^1.5.2",
+    "gulp-watch": "^4.3.5",
+    "handlebars": "^4.0.5",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0",
+    "node-normalize-scss": "^1.2.0"
+  }
+}

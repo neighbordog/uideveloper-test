@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <title>Selz Product Widget</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="dist/assets/css/widget.min.css" />
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- placeholder for a product widget for the item with the id 1rvbgi3 -->
+        <div class="selz-product-widget" id="selz-product-widget1" data-id="1rvbgi3"></div>
+    </div>
+
+    <!-- template for the product widget -->
+    <script id="product-widget-tpl" type="text/x-handlebars-template">
+        <div class="product-widget" itemscope itemtype="http://schema.org/Product">
+
+            <section class="top">
+                <div class="available">
+                    {{ Quantity }} Available
+                </div>
+                <div class="product-image">
+                    <img src="{{ ProductImage }}" alt="{{ Title }}" itemprop="image" />
+                </div>
+            </section>
+
+            <section class="main">
+
+                <div class="content">
+                    <h1 class="title" itemprop="name">{{ Title }}</h1>
+                    <div class="desc" itemprop="description">
+                        <p>
+                            {{ Description }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="right">
+                    <div class="product-price-wrap">
+                        <div class="product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                            <span class="price-regular-amount">{{ RegularPrice }}</span>
+                            <span class="price-amount" itemprop="price">{{ Price }}</span>
+                        </div>
+                    </div>
+                    <a href="{{ CheckoutUrl }}" class="buy-button button" target="_blank" itemprop="url">{{ Resources.LinkText }}</a>
+                    <div class="payment-methods">
+                        {{#if PayPalProcessingEnabled}}
+                            <svg class="payment-method paypal">
+                                <use xlink:href="#embed-logo-paypal" />
+                            </svg>
+                        {{/if}}
+                        {{#if CardProcessingEnabled}}
+                            <svg class="payment-method amex">
+                                <use xlink:href="#embed-logo-amex" />
+                            </svg>
+                            <svg class="payment-method diners">
+                                <use xlink:href="#embed-logo-diners" />
+                            </svg>
+                            <svg class="payment-method discover">
+                                <use xlink:href="#embed-logo-discover" />
+                            </svg>
+                            <svg class="payment-method jcb">
+                                <use xlink:href="#embed-logo-jcb" />
+                            </svg>
+                            <svg class="payment-method mastercard">
+                                <use xlink:href="#embed-logo-mastercard" />
+                            </svg>
+                            <svg class="payment-method visa">
+                                <use xlink:href="#embed-logo-visa" />
+                            </svg>
+                        {{/if}}
+                    </div>
+                </div>
+
+            </section>
+
+            <footer class="footer">
+                <a href="https://selz.com" class="brand" target="_blank">
+                    Powered by
+                    <svg class="logo">
+                        <use xlink:href="#embed-logo-selz" />
+                    </svg>
+                </a>
+            </footer>
+
+        </div>
+    </script>
+
+    <!-- template for error messages -->
+    <script id="product-widget-error-tpl" type="text/x-handlebars-template">
+        <div class="product-widget error" itemtype="http://schema.org/Product">
+            <div class="content">
+                <h1 class=" title error-message">{{ErrorTitle}}</h1>
+                <div class="desc">
+                    <p>{{ErrorMessage}}</p>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- javascript file for the product widget -->
+    <script src="dist/assets/js/widget.min.js"></script>
+
+</body>
+</html>

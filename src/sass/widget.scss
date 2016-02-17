@@ -1,0 +1,437 @@
+/**
+*    Main stylesheet for the product widget.
+*/
+
+@import "_mixins";
+@import "_variables";
+@import "normalize";
+
+body {
+    background: #fefefe;
+    font: 16px/1.5 $mainFontFamily;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 769px;
+    margin: 20px auto;
+}
+
+/**
+   The product widget.
+*/
+.product-widget {
+    background: $white;
+
+    @include border-radius($baseBorderRadius);
+    @include box-shadow(0, 1px, 3px, rgba(0,0,0, .64));
+
+    /*
+        Layout
+    */
+
+    .top {
+        background: #eceaea;
+        position: relative;
+        text-align: center;
+        line-height: 0;
+        min-height: 76px;
+
+        @include border-radius($baseBorderRadius $baseBorderRadius 0 0);
+        @include box-shadow(0, 1px, 2px, rgba(0,0,0, .32));
+
+        .available {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            z-index: 2;
+            opacity: 0.5;
+
+            @include transition(opacity 0.2s ease-out);
+        }
+
+        .product-image {
+            display: inline-block;
+            max-width: 480px;
+
+            > img {
+                display: none;
+                min-height: 240px;
+                max-height: 720px;
+                max-width: 100%;
+            }
+        }
+
+        &:hover {
+            .available { opacity: 1; }
+        }
+
+    }
+
+    .main {
+        padding: 24px;
+        position: relative;
+        @include clearfix();
+
+        .content {
+            min-height: 218px;
+            margin-right: 235px;
+            padding-right: 17px;
+            border-right: 1px solid $borderColor;
+        }
+
+
+        .right {
+            position: absolute;
+            right: 24px;
+            top: 24px;
+            bottom: 24px;
+            width: 218px;
+
+            .product-price-wrap {
+                margin: 24px 0;
+                text-align: center;
+            }
+
+            .button {
+                display: block;
+                margin-bottom: 24px;
+            }
+
+            .payment-methods {
+                text-align: right;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+        }
+
+    }
+
+    footer {
+        @include clearfix();
+
+        .brand {
+            display: block;
+            float: right;
+            text-decoration: none;
+            color: $textColor;
+            background: $grey;
+            font-size: 12px;
+            line-height: 12px;
+            font-weight: bold;
+            padding: 6px 12px 6px;
+
+            @include border-radius($baseBorderRadius 0 $baseBorderRadius 0);
+        }
+    }
+
+    /*
+        UI Elements & Typography
+    */
+
+    .title {
+        font-size: 24px;
+        margin: 0 0 12px;
+        color: $headlineColor;
+    }
+
+    .desc {
+        max-height: 360px;
+        overflow-y: auto;
+    }
+
+    .desc p {
+        color: $textColor;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 0 0 24px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+    }
+
+    .available {
+        color: $white;
+        background: rgba(0,0,0, .8);
+        display: inline-block;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 28px;
+        height: 28px;
+        white-space: nowrap;
+        padding: 0 12px;
+        @include border-radius($baseBorderRadius - 4);
+    }
+
+    .product-price {
+        display: inline-block;
+        border-bottom: 3px solid $borderColor;
+
+        .price-regular-amount {
+            margin-right: 8px;
+        }
+    }
+
+    .price-amount {
+        display: inline-block;
+        font-size: 18px;
+        font-weight: bold;
+        color: $accentColor;
+    }
+
+    .price-regular-amount {
+        display: inline-block;
+        font-size: 14px;
+        color: $red;
+        text-decoration: line-through;
+    }
+
+    .button {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 15px 12px;
+        background: $accentColor;
+        color: $white;
+
+        @include border-radius(100px);
+        @include transition(box-shadow 0.6s ease-out);
+
+        &:hover {
+            @include box-shadow(0, 0, 0, $black, 54px, true);
+        }
+
+    }
+
+    .logo {
+        display: inline-block;
+        height: 14px;
+        width:24px;
+        fill: $textColor;
+    }
+
+    /*
+        Payment methods
+    */
+    .payment-method {
+        height: 24px;
+        display: inline-block;
+        margin-right: 5px;
+
+        &.paypal {
+            width: 59px;
+        }
+
+        &.amex {
+            width: 37px;
+        }
+
+        &.diners {
+            width: 31px;
+        }
+
+        &.discover {
+            width: 37px;
+        }
+
+        &.jcb {
+            width: 35px;
+        }
+
+        &.mastercard {
+            width: 35px;
+        }
+
+        &.visa {
+            width: 35px;
+        }
+
+    }
+
+    /* Error Template */
+
+    &.error {
+        .content {
+            padding: 24px;
+        }
+    }
+
+}
+
+
+
+/**
+    Animation
+*/
+
+@keyframes stretchIn {
+    from {
+        opacity: 0;
+    }
+    80% {
+        opacity: 1;
+    }
+    85% {
+        transform: scale3d(1.1, 1, 1);
+    }
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.stretch-in {
+    animation-name: stretchIn;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+
+/**
+*    TVs & wide desktop devices
+*/
+@media (min-width: $bigScreenBreakpoint) {
+
+    .container {
+        width: 1100px;
+    }
+
+    .product-widget {
+
+        /*
+            Layout
+        */
+
+        .main {
+            .content {
+                margin-right: 385px;
+            }
+            .right {
+                width: 368px;
+            }
+        }
+
+        /*
+            UI Elements & Typography
+        */
+        .title {
+            font-size: 30px;
+        }
+
+        .desc p { font-size: 16px; }
+
+        .product-price {
+            .price-regular-amount {
+                font-size: 16px;
+            }
+            .price-amount {
+                font-size: 24px;
+            }
+        }
+
+        .button { font-size: 16px; }
+
+        .desc { max-height: 480px; }
+    }
+}
+
+/**
+*    Tablets, small PCs and similar handheld devices
+*/
+@media (max-width: $tabletBreakpoint) {
+
+    .container {
+        width: auto;
+        margin: 20px;
+    }
+
+    .product-widget {
+
+        /*
+            Layout
+        */
+
+        .top {
+            .product-image img {
+                min-height: 120px;
+                max-height: 480px;
+            }
+        }
+
+        .main {
+            .content {
+                min-height: 0;
+                margin-right: 0;
+                padding-right: 0;
+                border-right: 0;
+            }
+
+            .right {
+                position: relative;
+                top: auto;
+                left: auto;
+                bottom: auto;
+                right: auto;
+                width: auto;
+
+                .payment-methods {
+                    position: relative;
+                    top: auto;
+                    left: auto;
+                    bottom: auto;
+                    right: auto;
+                    margin-top: 24px;
+                }
+            }
+        }
+
+        /*
+            UI Elements & Typography
+        */
+
+        .desc { min-height: 0; }
+    }
+
+
+}
+
+/**
+*    Mobile devices
+*/
+@media (max-width: $mobileBreakpoint) {
+    .product-widget {
+
+        /*
+            Layout
+        */
+
+        .top {
+            .product-image {
+                max-width: 100%;
+                img {
+                    min-height: 90px;
+                    max-height: 360px;
+                }
+            }
+        }
+
+        .main {
+            .right {
+                .payment-methods { text-align: center; }
+            }
+        }
+
+        /*
+            UI Elements & Typography
+        */
+
+        .title { font-size: 18px; }
+        .payment-method { margin: 0 3px; }
+    }
+}
